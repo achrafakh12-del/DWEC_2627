@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 02 - Navegadores y Motores</title>
+
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Iconos de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Barra de navegación (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Achraf Akhmoul</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Navegadores y Motores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="interaccion.html">Interacción JS</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal de la Parte A -->
+    <main class="container">
+        <h1 class="mb-3">Parte A: Navegadores y Motores</h1>
+        <p class="text-muted">Desarrollo Web en Entorno Cliente</p>
+
+        <!-- 1. Tabla de Navegadores -->
+        <section class="my-4">
+            <h2 class="h4 mb-3">Comparativa de Navegadores</h2>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Navegador</th>
+                            <th>Empresa / Desarrollador</th>
+                            <th>Motor de Renderizado</th>
+                            <th>Motor de JavaScript</th>
+                            <th>Basado en Chromium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google Chrome</strong></td>
+                            <td>Google</td>
+                            <td>Blink</td>
+                            <td>V8</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mozilla Firefox</strong></td>
+                            <td>Mozilla Foundation</td>
+                            <td>Gecko</td>
+                            <td>SpiderMonkey</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apple Safari</strong></td>
+                            <td>Apple</td>
+                            <td>WebKit</td>
+                            <td>JavaScriptCore (Nitro)</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Microsoft Edge</strong></td>
+                            <td>Microsoft</td>
+                            <td>Blink</td>
+                            <td>V8</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opera</strong></td>
+                            <td>Opera Software</td>
+                            <td>Blink</td>
+                            <td>V8</td>
+                            <td>Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. Explicación de motores -->
+        <section class="my-4">
+            <h2 class="h4 mb-2">¿Por qué casi todos los navegadores comparten motor?</h2>
+            <p>
+                En la actualidad, la mayoría de los navegadores web principales (Chrome, Edge, Opera, Brave) utilizan el motor de renderizado Blink y el motor V8, debido al dominio del proyecto de código abierto Chromium. Los únicos grandes navegadores que se mantienen fuera de este ecosistema son Mozilla Firefox (que usa Gecko) y Apple Safari (que utiliza WebKit). Para quien desarrolla una página web, esto simplifica el trabajo significativamente, ya que la mayor parte del tráfico interpretará el código HTML, CSS y JavaScript de manera casi idéntica. Sin embargo, también exige realizar pruebas específicas en Firefox y Safari para evitar fallos de compatibilidad en entornos no basados en Chromium.
+            </p>
+        </section>
+
+        <!-- 3. Ejemplo de compatibilidad (CanIUse) dentro de una Card -->
+        <section class="my-4">
+            <div class="card border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">Ejemplo Real de Compatibilidad (CanIUse)</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Característica: CSS Container Queries (Size Queries)</h6>
+                    <p class="card-text">
+                        Las <em>Container Queries</em> permiten aplicar estilos a elementos según el tamaño de su contenedor padre en lugar del tamaño de la pantalla (viewport).
+                    </p>
+                    <p class="card-text">
+                        <strong>Comportamiento / Fallos:</strong> Aunque está soportado en las versiones modernas de Chrome, Edge, Firefox y Safari, falla o no funciona en versiones antiguas como <strong>Safari en iOS 15.8 o anteriores</strong> y versiones anteriores a Firefox 110.
+                    </p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Consulta realizada el: 1 de octubre de 2026. <br>
+                            Enlace de referencia: <a href="https://caniuse.com/css-container-queries" target="_blank" rel="noopener">caniuse.com/css-container-queries</a>
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Reflexión sobre pruebas en navegadores -->
+        <section class="my-4 mb-5">
+            <h2 class="h4 mb-2">Reflexión: Estrategia de Pruebas</h2>
+            <p>
+                Si un cliente me encarga un sitio web, probaría primero en <strong>Google Chrome (móvil y escritorio)</strong> por ser el navegador con mayor cuota de mercado global. A continuación, realizaría pruebas exhaustivas en <strong>Safari en iOS (iPhone/iPad)</strong>, ya que WebKit tiene peculiaridades en el renderizado móvil que no aparecen en Chromium. Finalmente, comprobaría el funcionamiento en <strong>Firefox</strong> para garantizar compatibilidad con un motor independiente como Gecko.
+            </p>
+        </section>
+    </main>
+
+    <!-- JS de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
